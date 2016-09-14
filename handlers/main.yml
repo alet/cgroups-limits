@@ -1,0 +1,4 @@
+---
+
+- name: restart cgroup-lite
+  service: name=cgroup-lite state=restarted

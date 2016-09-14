@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Alet
+  description: CPU and memory limits via cgroups
+
+  license: MIT
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+
+  galaxy_tags:
+  - cgroups
+  - limits
+
+dependencies: []

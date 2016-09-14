@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+
+{% for user_limit in users_limit %}
+{% if not user_limit.del|default(false) %}
+group {{ user_limit.name }} {
+    cpu {
+        cpu.shares = "{{ (user_limit.cpu|default(cglimits_default_cpu) * 10.24)|int }}";
+    }
+    memory {
+        memory.limit_in_bytes = "{{ user_limit.mem|default(cglimits_default_mem) * 1024 * 1024 }}";
+    }
+}
+{% endif %}
+{% endfor %}

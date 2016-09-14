@@ -1,0 +1,30 @@
+---
+# Limits role
+
+- name: Install packages
+  apt: name={{ item }}
+  with_items:
+    - cgroup-bin
+    - libcgroup1
+
+- name: Create service cgrulesengd
+  copy: src=cgrulesengd.conf dest=/etc/init/cgrulesengd.conf mode="644" owner="root" group="root"
+
+- name: Modify service cgroup-lite
+  copy: src=cgroup-lite.conf dest=/etc/init/cgroup-lite.conf mode="644" owner="root" group="root"
+
+- name: Turn on services
+  service: name={{ item }} enabled=yes state=started
+  with_items:
+    - cgrulesengd
+    - cgroup-lite
+
+- name: Create config cgconfig.conf
+  template: src=cgconfig.j2 dest=/etc/cgconfig.conf
+  notify:
+    - restart cgroup-lite
+
+- name: Create config cgrules.conf
+  template: src=cgrules.j2 dest=/etc/cgrules.conf
+  notify:
+    - restart cgroup-lite

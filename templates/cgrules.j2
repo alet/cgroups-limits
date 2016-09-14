@@ -1,0 +1,5 @@
+# {{ ansible_managed }}
+
+{% for user_limit in users_limit %}
+{{ user_limit.name }}	cpu,memory	{{ user_limit.name }}
+{% endfor %}

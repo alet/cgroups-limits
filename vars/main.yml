@@ -1,0 +1,4 @@
+---
+
+cglimits_default_cpu: 50
+cglimits_default_mem: 128
