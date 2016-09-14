@@ -1,5 +1,7 @@
 # User limits module
 
+[![Build Status](https://travis-ci.org/alet/cgroups-limits.svg?branch=master)](https://travis-ci.org/alet/cgroups-limits)
+
 This module turn on cpu and memory limits on specifed user. Module use cgroup facility of linux kernel, but developed for and tested on Ubuntu 14.04
 
 ## Installing
